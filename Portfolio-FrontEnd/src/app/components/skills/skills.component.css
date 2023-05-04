@@ -1,0 +1,13 @@
+.barra{
+    background-color: #B6776E;
+}
+#habilidades{
+    background-image: url(../../../assets/fondo.png);
+    background-size: 100vw;
+}
+
+@media (max-width: 650px) {
+    #habilidades{
+      background-image: none;
+    }
+}

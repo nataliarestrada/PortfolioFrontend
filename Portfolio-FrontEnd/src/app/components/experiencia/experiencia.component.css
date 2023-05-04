@@ -1,0 +1,9 @@
+#experiencia{
+    background-image: url(../../../assets/fondo.png);
+    background-size: 100vw;
+}
+@media (max-width: 650px) {
+    #experiencia{
+      background-image: none;
+    }
+}

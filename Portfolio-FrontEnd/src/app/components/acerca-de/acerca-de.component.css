@@ -1,4 +1,9 @@
-.acerca-de{
-    border-style: none;
-    padding: 0 50px 0 50px;
+#acerca-de-mi{
+   background-image: url(../../../assets/fondo.png);
+   background-size: 100vw;
+}
+@media (max-width: 650px) {
+   #acerca-de-mi{
+     background-image: none;
+   }
 }
