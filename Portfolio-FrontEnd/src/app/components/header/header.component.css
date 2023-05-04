@@ -1,0 +1,10 @@
+header{
+    background-color: #B6776E;
+}
+nav{
+    display: flex;
+    padding: 0px 20px 0px 20px;
+}
+#logoAP{
+    width: 200px;
+}
