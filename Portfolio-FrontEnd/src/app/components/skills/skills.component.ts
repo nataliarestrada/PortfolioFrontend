@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkillsComponent implements OnInit{
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    //throw new Error('Method not implemented.');
   }
 
 }

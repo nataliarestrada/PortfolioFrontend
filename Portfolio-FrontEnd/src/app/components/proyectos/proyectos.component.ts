@@ -18,21 +18,21 @@ export class ProyectosComponent implements OnInit{
       nombre: 'Proyecto 1',
       fecha: 'Enero 2022',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      imagen: 'ruta/a/la/imagen',
+      imagen: '#',
       link: 'link/a/la/evidencia'
     },
     {
       nombre: 'Proyecto 2',
       fecha: 'Febrero 2022',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      imagen: 'ruta/a/la/imagen',
+      imagen: '#',
       link: 'link/a/la/evidencia'
     },
     // Agregar más proyectos aquí
   ];
   
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    //throw new Error('Method not implemented.');
   }
 
  
