@@ -5,10 +5,12 @@
  */
 package com.portfolio.PortfolioBackEnd.Controller;
 
-import com.portfolio.PortfolioBackEnd.Dto.dtoExperiencia;
+import com.portfolio.PortfolioBackEnd.Dto.ExperienciaDto;
 import com.portfolio.PortfolioBackEnd.Entity.Experiencia;
+import com.portfolio.PortfolioBackEnd.Entity.Persona;
+import com.portfolio.PortfolioBackEnd.Repository.PersonaRepositority;
 import com.portfolio.PortfolioBackEnd.Security.Controller.Mensaje;
-import com.portfolio.PortfolioBackEnd.Service.SExperiencia;
+import com.portfolio.PortfolioBackEnd.Service.ExperienciaService;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +33,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/explab")
 @CrossOrigin(origins = "http://localhost:4200")
-public class CExperiencia {
+public class ExperienciaController {
     @Autowired
-    SExperiencia sExperiencia;
+    ExperienciaService sExperiencia;
+    @Autowired
+    PersonaRepositority rPerso;
     
     @GetMapping("/lista")
     public ResponseEntity<List<Experiencia>> list(){
@@ -49,39 +53,6 @@ public class CExperiencia {
         return new ResponseEntity(experiencia, HttpStatus.OK);
     }
     
-    @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody dtoExperiencia dtoexp){      
-        if(StringUtils.isBlank(dtoexp.getNombreE()))
-            return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-        if(sExperiencia.existsByNombreE(dtoexp.getNombreE()))
-            return new ResponseEntity(new Mensaje("Esa experiencia existe"), HttpStatus.BAD_REQUEST);
-        
-        Experiencia experiencia = new Experiencia(dtoexp.getNombreE(), dtoexp.getDescripcionE());
-        sExperiencia.save(experiencia);
-        
-        return new ResponseEntity(new Mensaje("Experiencia agregada"), HttpStatus.OK);
-    }
-    
-    @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoExperiencia dtoexp){
-        //Validamos si existe el ID
-        if(!sExperiencia.existsById(id))
-            return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
-        //Compara nombre de experiencias
-        if(sExperiencia.existsByNombreE(dtoexp.getNombreE()) && sExperiencia.getByNombreE(dtoexp.getNombreE()).get().getId() != id)
-            return new ResponseEntity(new Mensaje("Esa experiencia ya existe"), HttpStatus.BAD_REQUEST);
-        //No puede estar vacio
-        if(StringUtils.isBlank(dtoexp.getNombreE()))
-            return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-        
-        Experiencia experiencia = sExperiencia.getOne(id).get();
-        experiencia.setNombreE(dtoexp.getNombreE());
-        experiencia.setDescripcionE((dtoexp.getDescripcionE()));
-        
-        sExperiencia.save(experiencia);
-        return new ResponseEntity(new Mensaje("Experiencia actualizada"), HttpStatus.OK);     
-    }
-    
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         if (!sExperiencia.existsById(id)) {
@@ -89,5 +60,44 @@ public class CExperiencia {
         }
         sExperiencia.delete(id);
         return new ResponseEntity(new Mensaje("producto eliminado"), HttpStatus.OK);
+    }
+    
+    @PostMapping("/create")
+    public ResponseEntity<?> create(@RequestBody ExperienciaDto dtoexp){      
+        if(StringUtils.isBlank(dtoexp.getPuestoExpe()))
+            return new ResponseEntity(new Mensaje("El nombre del puesto es obligatorio"), HttpStatus.BAD_REQUEST);
+//        if(sExperiencia.existsByNombreE(dtoexp.getNombreE()))
+//            return new ResponseEntity(new Mensaje("Esa experiencia existe"), HttpStatus.BAD_REQUEST);
+        
+        Persona perso = rPerso.findById(dtoexp.getPersonaId()).orElse(null);
+        Experiencia experiencia = new Experiencia(perso, dtoexp.getPuestoExpe(), dtoexp.getPeriodoExpe()
+                ,dtoexp.getOrganismoExpe(), dtoexp.getDescripcionExpe(), dtoexp.getUrlLogoExpe());
+        sExperiencia.save(experiencia);
+        
+        return new ResponseEntity(new Mensaje("Experiencia agregada"), HttpStatus.OK);
+    }
+    
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody ExperienciaDto dtoexp){
+        //Validamos si existe el ID
+        if(!sExperiencia.existsById(id))
+            return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
+        //Compara nombre de experiencias
+//        if(sExperiencia.existsByNombreE(dtoexp.getNombreE()) && sExperiencia.getByNombreE(dtoexp.getNombreE()).get().getId() != id)
+//            return new ResponseEntity(new Mensaje("Esa experiencia ya existe"), HttpStatus.BAD_REQUEST);
+        //No puede estar vacio
+        if(StringUtils.isBlank(dtoexp.getPuestoExpe()))
+            return new ResponseEntity(new Mensaje("El nombre del puesto es obligatorio"), HttpStatus.BAD_REQUEST);
+        
+        Experiencia experiencia = sExperiencia.getOne(id).get();
+        experiencia.setPuestoExpe(dtoexp.getPuestoExpe());
+        experiencia.setPeriodoExpe(dtoexp.getPeriodoExpe());
+        experiencia.setOrganismoExpe(dtoexp.getOrganismoExpe());
+        experiencia.setDescripcionExpe(dtoexp.getDescripcionExpe());
+        experiencia.setUrlLogoExpe(dtoexp.getUrlLogoExpe());
+        
+        sExperiencia.save(experiencia);
+        return new ResponseEntity(new Mensaje("Experiencia actualizada"), HttpStatus.OK);
+             
     }
 }

@@ -6,6 +6,7 @@
 package com.portfolio.PortfolioBackEnd.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,33 +21,35 @@ import lombok.Setter;
  *
  * @author natal
  */
+
 @Entity
-@Getter @Setter
-public class Experiencia {
+@Setter @Getter
+public class Educacion {
+    
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "persona_id")
     private Persona persona;
-    private String puestoExpe;
-    private String periodoExpe;
-    private String organismoExpe;
+    private String tituloEdu;
+    private String periodoEdu;
+    private String institucionEdu;
     @Size(max = 500, message = "excedio la longitud")
-    private String descripcionExpe;
+    private String descripcionEdu;
     @Size(max = 500, message = "excedio la longitud")
-    private String urlLogoExpe;
+    private String urlLogoEdu;
 
-    public Experiencia() {
+    public Educacion() {
     }
 
-    public Experiencia(Persona persona, String puestoExpe, String periodoExpe, String organismoExpe, String descripcionExpe, String urlLogoExpe) {
+    public Educacion(Persona persona, String tituloEdu, String periodoEdu, String institucionEdu, String descripcionEdu, String urlLogoEdu) {
         this.persona = persona;
-        this.puestoExpe = puestoExpe;
-        this.periodoExpe = periodoExpe;
-        this.organismoExpe = organismoExpe;
-        this.descripcionExpe = descripcionExpe;
-        this.urlLogoExpe = urlLogoExpe;
+        this.tituloEdu = tituloEdu;
+        this.periodoEdu = periodoEdu;
+        this.institucionEdu = institucionEdu;
+        this.descripcionEdu = descripcionEdu;
+        this.urlLogoEdu = urlLogoEdu;
     }
     
     

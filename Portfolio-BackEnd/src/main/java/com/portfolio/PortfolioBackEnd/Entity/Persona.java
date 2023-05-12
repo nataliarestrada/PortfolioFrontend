@@ -1,31 +1,96 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.portfolio.PortfolioBackEnd.Entity;
 
+import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
 @Entity
+@Getter @Setter
 public class Persona {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    @NotNull
-    @Size(min=1, max=50, message="No cumple con la longitud")
+    private int id;
+    @Size(min = 1, max = 100, message = "no cumple con la longitud")
     private String nombre;
+    private String ocupacion;
+    @Size(max = 500, message = "excedio la longitud")
+    private String bannerUrl;
+    private String email;
+    @Size(max = 500, message = "excedio la longitud")
+    private String linkedinUrl;
+    @Size(max = 500, message = "excedio la longitud")
+    private String githubUrl;
+    @Size(max = 500, message = "excedio la longitud")
+    private String facebookUrl;
+    @Size(max = 500, message = "excedio la longitud")
+    private String twtterUrl;
+    @Size(max = 500, message = "excedio la longitud")
+    private String instagramUrl;
+    @Size(max = 500, message = "excedio la longitud")
+    private String descripcion;
+    @Size(max = 500, message = "excedio la longitud")
+    private String imgUrl;
     
-    @NotNull
-    @Size(min=1, max=50, message="No cumple con la longitud")
-    private String apellido;
     
-  
-    @Size(min=1, max=50, message="No cumple con la longitud")
-    private String img;
+    @OneToMany(mappedBy = "persona")
+    private List<Educacion> educaciones;
+    
+    @OneToMany(mappedBy = "persona")
+    private List<Experiencia> experiencias;
+    
+    @OneToMany(mappedBy = "persona")
+    private List<Proyecto> proyectos;
+    
+    //constructor
 
+    public Persona() {
+    }
+
+    //para edicion
+    public Persona(String nombre, String ocupacion, String bannerUrl, String email, String linkedinUrl, String githubUrl, String facebookUrl, String twtterUrl, String instagramUrl, String descripcion, String imgUrl) {
+        this.nombre = nombre;
+        this.ocupacion = ocupacion;
+        this.bannerUrl = bannerUrl;
+        this.email = email;
+        this.linkedinUrl = linkedinUrl;
+        this.githubUrl = githubUrl;
+        this.facebookUrl = facebookUrl;
+        this.twtterUrl = twtterUrl;
+        this.instagramUrl = instagramUrl;
+        this.descripcion = descripcion;
+        this.imgUrl = imgUrl;
+    }
+
+    public Persona(String nombre, String ocupacion, String bannerUrl, String email, String linkedinUrl, String githubUrl, String facebookUrl, String twtterUrl, String instagramUrl, String descripcion, String imgUrl, List<Educacion> educaciones, List<Experiencia> experiencias, List<Proyecto> proyectos) {
+        this.nombre = nombre;
+        this.ocupacion = ocupacion;
+        this.bannerUrl = bannerUrl;
+        this.email = email;
+        this.linkedinUrl = linkedinUrl;
+        this.githubUrl = githubUrl;
+        this.facebookUrl = facebookUrl;
+        this.twtterUrl = twtterUrl;
+        this.instagramUrl = instagramUrl;
+        this.descripcion = descripcion;
+        this.imgUrl = imgUrl;
+        this.educaciones = educaciones;
+        this.experiencias = experiencias;
+        this.proyectos = proyectos;
+    }
+    
+    
+    
 }

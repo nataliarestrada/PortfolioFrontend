@@ -9,8 +9,13 @@ import { SExperienciaService } from 'src/app/service/s-experiencia.service';
   styleUrls: ['./new-experiencia.component.css']
 })
 export class NewExperienciaComponent implements OnInit{
-  nombreE: string = '';
-  descripcionE: string = '';
+  
+  personaId: number = 1;
+  puestoExpe: String = "";
+  periodoExpe: String = "";
+  organismoExpe: String = "";
+  descripcionExpe: String = "";
+  urlLogoExpe: String = "";
 
   constructor(private sExperiencia: SExperienciaService, private router: Router) { }
 
@@ -19,7 +24,11 @@ export class NewExperienciaComponent implements OnInit{
   }
 
   onCreate(): void {
-    const expe = new Experiencia(this.nombreE, this.descripcionE);
+    const expe = new Experiencia(this.personaId, this.puestoExpe, this.periodoExpe, this.organismoExpe, this.descripcionExpe, this.urlLogoExpe);
+    if(expe.urlLogoExpe == ""){
+      expe.urlLogoExpe = "https://empresas.infoempleo.com/hrtrends/media/2020/08/HRTrends-como-se-valora-un-curr%C3%ADculum.jpg"
+    }
+
     this.sExperiencia.save(expe).subscribe(
       data => {
         alert("Experiencia añadida");

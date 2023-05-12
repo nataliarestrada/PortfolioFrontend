@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { persona } from 'src/app/model/Persona.model';
+import { PersonaService } from 'src/app/service/persona.service';
 import { TokenService } from 'src/app/service/token.service';
 
 @Component({
@@ -8,8 +10,10 @@ import { TokenService } from 'src/app/service/token.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit{
+  persona: persona = new persona("","","","","","","","","","","");
+
   isLogged = false;
-  constructor(private router:Router, private tokenService: TokenService){
+  constructor(private router:Router, private tokenService: TokenService, public personaService: PersonaService){
 
   }
   
@@ -19,6 +23,7 @@ export class HeaderComponent implements OnInit{
     }else{
       this.isLogged = false;
     }
+    this.personaService.getPersona().subscribe(data => {this.persona=data})
   }
 
   onLogOut(): void{

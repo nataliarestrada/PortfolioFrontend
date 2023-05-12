@@ -21,32 +21,32 @@ import lombok.Setter;
  * @author natal
  */
 @Entity
-@Getter @Setter
-public class Experiencia {
+@Setter @Getter
+public class Proyecto {
+    
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "persona_id")
     private Persona persona;
-    private String puestoExpe;
-    private String periodoExpe;
-    private String organismoExpe;
+    private String nombreProye;
     @Size(max = 500, message = "excedio la longitud")
-    private String descripcionExpe;
+    private String descripcionProye;
     @Size(max = 500, message = "excedio la longitud")
-    private String urlLogoExpe;
+    private String imgUrl;
+    @Size(max = 500, message = "excedio la longitud")
+    private String repoUrl;
 
-    public Experiencia() {
+    public Proyecto() {
     }
 
-    public Experiencia(Persona persona, String puestoExpe, String periodoExpe, String organismoExpe, String descripcionExpe, String urlLogoExpe) {
+    public Proyecto(Persona persona, String nombreProye, String descripcionProye, String imgUrl, String repoUrl) {
         this.persona = persona;
-        this.puestoExpe = puestoExpe;
-        this.periodoExpe = periodoExpe;
-        this.organismoExpe = organismoExpe;
-        this.descripcionExpe = descripcionExpe;
-        this.urlLogoExpe = urlLogoExpe;
+        this.nombreProye = nombreProye;
+        this.descripcionProye = descripcionProye;
+        this.imgUrl = imgUrl;
+        this.repoUrl = repoUrl;
     }
     
     
