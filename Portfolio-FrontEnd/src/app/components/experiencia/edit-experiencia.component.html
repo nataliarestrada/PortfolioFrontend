@@ -1,34 +1,45 @@
-<div class="container" *ngIf="expLab">
-    <div class="card">
-        <div class="card-header">
-            Editar
-        </div>
-        <div class="card-body">
-            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
-                <div class="form-group">
-                    <label for="puestoExpe">Puesto</label>
-                    <input type="text" class="form-control" id="puestoExpe" name="puestoExpe" [(ngModel)]="expLab.puestoExpe" required>
-                </div>
-                <div class="form-group">
-                    <label for="organismoExpe">Organismo</label>
-                    <input type="text" class="form-control" id="organismoExpe" name="organismoExpe" [(ngModel)]="expLab.organismoExpe" required>
-                </div>
-                <div class="form-group">
-                    <label for="descripcionExpe">descripcion Expe</label>
-                    <input type="text" class="form-control" id="descripcionExpe" name="descripcionExpe" [(ngModel)]="expLab.descripcionExpe" required>
-                </div>
-                <div class="form-group">
-                    <label for="periodoExpe">Periodo</label>
-                    <input type="text" class="form-control" id="periodoExpe" name="periodoExpe" [(ngModel)]="expLab.periodoExpe" required>
-                </div>
-                <div class="form-group">
-                    <label for="urlLogoExpe">Url logo</label>
-                    <input type="text" class="form-control" id="urlLogoExpe" name="urlLogoExpe" [(ngModel)]="expLab.urlLogoExpe">
-                </div>
-                <button class="btn btn-primary">
-                    Actualizar experiencia
-                </button>
-            </form>
+<div class="editExpe">
+    <div class="container p-5" *ngIf="expLab">
+        <div class="card bg-glass">
+            <div class="card-header text-center">
+                <h1>Editar Experiencia</h1>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="onUpdate()" novalidate #f="ngForm" class="px-5">
+                    <div class="form-group mb-3">
+                        <label for="puestoExpe">Puesto</label>
+                        <input type="text" class="form-control" id="puestoExpe" name="puestoExpe"
+                            [(ngModel)]="expLab.puestoExpe" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="organismoExpe">Organismo</label>
+                        <input type="text" class="form-control" id="organismoExpe" name="organismoExpe"
+                            [(ngModel)]="expLab.organismoExpe" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="descripcionExpe">Descripcion</label>
+                        <input type="text" class="form-control" id="descripcionExpe" name="descripcionExpe"
+                            [(ngModel)]="expLab.descripcionExpe" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="periodoExpe">Periodo</label>
+                        <input type="text" class="form-control" id="periodoExpe" name="periodoExpe"
+                            [(ngModel)]="expLab.periodoExpe" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="urlLogoExpe">Url logo</label>
+                        <input type="text" class="form-control" id="urlLogoExpe" name="urlLogoExpe"
+                            [(ngModel)]="expLab.urlLogoExpe">
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-success">
+                            Actualizar
+                        </button>
+                        <a href="/" class="btn btn-secondary">Cancelar</a>
+
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

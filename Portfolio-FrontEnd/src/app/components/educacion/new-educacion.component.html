@@ -1,0 +1,47 @@
+<div class="newEdu">
+    <div class="container p-5">
+        <div class="card bg-glass">
+            <div class="card-header text-center">
+                <h1>Crear Nueva Educacion</h1>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="onCreate()" novalidate #f="ngForm" class="px-5">
+                    <div class="form-group mb-3">
+                        <label for="tituloEdu">Titulo</label>
+                        <input type="text" class="form-control" id="tituloEdu" name="tituloEdu"
+                            [(ngModel)]="tituloEdu" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="institucionEdu">Institucion</label>
+                        <input type="text" class="form-control" id="institucionEdu" name="institucionEdu"
+                            [(ngModel)]="institucionEdu" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="descripcionEdu">Descripcion</label>
+                        <input type="text" class="form-control" id="descripcionEdu" name="descripcionEdu"
+                            [(ngModel)]="descripcionEdu" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="periodoEdu">Periodo</label>
+                        <input type="text" class="form-control" id="periodoEdu" name="periodoEdu"
+                            [(ngModel)]="periodoEdu" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="urlLogoEdu">Url logo</label>
+                        <input type="text" class="form-control" id="urlLogoEdu" name="urlLogoEdu"
+                            [(ngModel)]="urlLogoEdu">
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-success">
+                            Agregar
+                        </button>
+                        <a href="/" class="btn btn-secondary">Cancelar</a>
+
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

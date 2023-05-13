@@ -1,45 +1,43 @@
-<div class="newExpe">
-    <div class="container p-5">
+<div class="editEdu">
+    <div class="container p-5" *ngIf="educacion">
         <div class="card bg-glass">
             <div class="card-header text-center">
-                <h1>Crear Nueva Experiencia</h1>
+                <h1>Editar Educación</h1>
             </div>
             <div class="card-body">
-                <form (ngSubmit)="onCreate()" novalidate #f="ngForm" class="px-5">
+                <form (ngSubmit)="onUpdate()" novalidate #f="ngForm" class="px-5">
                     <div class="form-group mb-3">
-                        <label for="puestoExpe">Puesto</label>
+                        <label for="puestoExpe">Titulo</label>
                         <input type="text" class="form-control" id="puestoExpe" name="puestoExpe"
-                            [(ngModel)]="puestoExpe" required>
+                            [(ngModel)]="educacion.tituloEdu" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="organismoExpe">Organismo</label>
+                        <label for="organismoExpe">Institucion</label>
                         <input type="text" class="form-control" id="organismoExpe" name="organismoExpe"
-                            [(ngModel)]="organismoExpe" required>
+                            [(ngModel)]="educacion.institucionEdu" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="descripcionExpe">Descripcion</label>
                         <input type="text" class="form-control" id="descripcionExpe" name="descripcionExpe"
-                            [(ngModel)]="descripcionExpe" required>
+                            [(ngModel)]="educacion.descripcionEdu" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="periodoExpe">Periodo</label>
                         <input type="text" class="form-control" id="periodoExpe" name="periodoExpe"
-                            [(ngModel)]="periodoExpe" required>
+                            [(ngModel)]="educacion.periodoEdu" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="urlLogoExpe">Url logo</label>
                         <input type="text" class="form-control" id="urlLogoExpe" name="urlLogoExpe"
-                            [(ngModel)]="urlLogoExpe">
+                            [(ngModel)]="educacion.urlLogoEdu">
                     </div>
-
                     <div class="d-flex justify-content-between">
                         <button class="btn btn-success">
-                            Agregar
+                            Actualizar
                         </button>
                         <a href="/" class="btn btn-secondary">Cancelar</a>
 
                     </div>
-                    
                 </form>
             </div>
         </div>
