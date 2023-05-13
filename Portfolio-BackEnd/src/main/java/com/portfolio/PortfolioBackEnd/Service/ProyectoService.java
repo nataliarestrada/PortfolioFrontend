@@ -5,8 +5,8 @@
  */
 package com.portfolio.PortfolioBackEnd.Service;
 
-import com.portfolio.PortfolioBackEnd.Entity.Educacion;
-import com.portfolio.PortfolioBackEnd.Repository.EducacionRepository;
+import com.portfolio.PortfolioBackEnd.Entity.Proyecto;
+import com.portfolio.PortfolioBackEnd.Repository.ProyectoRepository;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -19,28 +19,28 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Transactional
-public class EducacionService {
+public class ProyectoService {
     @Autowired
-    EducacionRepository rEdu;
+    ProyectoRepository rPro;
     
-    public List<Educacion> list() {
-        return rEdu.findAll();
+    public List<Proyecto> list() {
+        return rPro.findAll();
     }
 
-    public Optional<Educacion> getOne(int id) {
-        return rEdu.findById(id);
+    public Optional<Proyecto> getOne(int id) {
+        return rPro.findById(id);
          
     }
     
-    public void save(Educacion edu) {
-        rEdu.save(edu);
+    public void save(Proyecto pro) {
+        rPro.save(pro);
     }
 
     public void delete(int id) {
-        rEdu.deleteById(id);
+        rPro.deleteById(id);
     }
 
     public boolean existsById(int id) {
-        return rEdu.existsById(id);
+        return rPro.existsById(id);
     }
 }

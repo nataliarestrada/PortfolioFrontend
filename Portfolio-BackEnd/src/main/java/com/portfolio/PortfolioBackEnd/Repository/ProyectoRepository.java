@@ -7,11 +7,13 @@ package com.portfolio.PortfolioBackEnd.Repository;
 
 import com.portfolio.PortfolioBackEnd.Entity.Proyecto;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author natal
  */
+@Repository
 public interface ProyectoRepository extends JpaRepository<Proyecto, Integer>{
     
 }

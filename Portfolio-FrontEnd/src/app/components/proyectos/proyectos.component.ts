@@ -1,39 +1,42 @@
 import { Component, OnInit } from '@angular/core';
+import { Proyecto } from 'src/app/model/proyecto';
+import { ProyectoService } from 'src/app/service/proyecto.service';
+import { TokenService } from 'src/app/service/token.service';
 
-interface Proyecto {
-  nombre: string;
-  fecha: string;
-  descripcion: string;
-  imagen: string;
-  link: string;
-}
 @Component({
   selector: 'app-proyectos',
   templateUrl: './proyectos.component.html',
   styleUrls: ['./proyectos.component.css']
 })
 export class ProyectosComponent implements OnInit{
-  proyectos: Proyecto[] = [
-    {
-      nombre: 'Proyecto 1',
-      fecha: 'Enero 2022',
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      imagen: '#',
-      link: 'link/a/la/evidencia'
-    },
-    {
-      nombre: 'Proyecto 2',
-      fecha: 'Febrero 2022',
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      imagen: '#',
-      link: 'link/a/la/evidencia'
-    },
-    // Agregar más proyectos aquí
-  ];
+  proyecto: Proyecto[] = [];
+
+  constructor(private sProyecto: ProyectoService, private tokenService: TokenService){}
   
+  isLogged = false;
+
   ngOnInit(): void {
-    //throw new Error('Method not implemented.');
+    this.cargarProyecto();
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
   }
 
- 
+  cargarProyecto(): void {
+    this.sProyecto.lista().subscribe(data => { this.proyecto = data; })
+  }
+
+  delete(id?: number){
+    if(id != undefined){
+      this.sProyecto.delete(id).subscribe(
+        data => {
+          this.cargarProyecto();
+        }, err => {
+          alert("No se pudo borrar el proyecto");
+        }
+      )
+    }
+  }
 }

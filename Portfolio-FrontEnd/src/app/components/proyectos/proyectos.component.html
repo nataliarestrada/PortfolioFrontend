@@ -1,19 +1,40 @@
 <section id="proyectos" class="py-5">
-    <div class="container">
-      <h2 class="text-center mb-5">Proyectos</h2>
-      <div class="row">
-        <div class="col-md-4 mb-4" *ngFor="let proyecto of proyectos">
-          <div class="card h-100">
-            <img [src]="proyecto.imagen" class="card-img-top" [alt]="proyecto.nombre">
-            <div class="card-body">
-              <h5 class="card-title">{{ proyecto.nombre }}</h5>
-              <p class="card-text">{{ proyecto.descripcion }}</p>
-              <a [href]="proyecto.link" class="btn btn-primary">Ver proyecto</a>
+  <div class="container">
+    <h2 class="text-center mb-5">Proyectos</h2>
+    <div class="row-1 mb-3">
+      <button type="button" class="btn btn-success" routerLink="/nuevopro" *ngIf="isLogged">Success</button>
+    </div>
+
+    <div class="row row-cols-auto justify-content-center">
+      <div class="col-md-6 mb-3" *ngFor="let proyec of proyecto" style="min-width: 250px;">
+        <div class="card">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{{proyec.imgUrl}}" class="img-fluid" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <h5 class="card-title">{{proyec.nombreProye}}</h5>
+                  <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example"
+                    *ngIf="isLogged">
+                    <button type="button" class="btn btn-info" routerLink="/editpro/{{proyec.id}}"><i
+                        class="bi bi-pencil text-white"></i></button>
+                    <button type="button" class="btn btn-danger" (click)="delete(proyec.id)"><i
+                        class="bi bi-trash3 text-white"></i></button>
+                  </div>
+                </div>
+                <!-- <h6 class="card-subtitle mb-2 text-muted">{{edu.institucionEdu}}</h6> -->
+                <p class="card-text">{{proyec.descripcionProye}}</p>
+              </div>
+
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">{{proyec.repoUrl}}</small>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  
-  
+  </div>
+</section>

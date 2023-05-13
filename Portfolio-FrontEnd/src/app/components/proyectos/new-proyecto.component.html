@@ -1,0 +1,42 @@
+<div class="newPro">
+    <div class="container p-5">
+        <div class="card bg-glass">
+            <div class="card-header text-center">
+                <h1>Crear Nuevo Proyecto</h1>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="onCreate()" novalidate #f="ngForm" class="px-5">
+                    <div class="form-group mb-3">
+                        <label for="nombreProye">Nombre Proyecto</label>
+                        <input type="text" class="form-control" id="nombreProye" name="nombreProye"
+                            [(ngModel)]="nombreProye" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="descripcionProye">Descripcion</label>
+                        <input type="text" class="form-control" id="descripcionProye" name="descripcionProye"
+                            [(ngModel)]="descripcionProye" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="repoUrl">Url Repositorio</label>
+                        <input type="text" class="form-control" id="repoUrl" name="repoUrl"
+                            [(ngModel)]="repoUrl" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="imgUrl">Url logo</label>
+                        <input type="text" class="form-control" id="imgUrl" name="imgUrl"
+                            [(ngModel)]="imgUrl">
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-success">
+                            Agregar
+                        </button>
+                        <a href="/" class="btn btn-secondary">Cancelar</a>
+
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

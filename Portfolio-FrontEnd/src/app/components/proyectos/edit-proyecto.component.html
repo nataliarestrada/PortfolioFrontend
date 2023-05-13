@@ -1,0 +1,40 @@
+<div class="editPro">
+    <div class="container p-5" *ngIf="proyecto">
+        <div class="card bg-glass">
+            <div class="card-header text-center">
+                <h1>Editar Proyecto</h1>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="onUpdate()" novalidate #f="ngForm" class="px-5">
+                    <div class="form-group mb-3">
+                        <label for="nombreProye">Nombre</label>
+                        <input type="text" class="form-control" id="nombreProye" name="nombreProye"
+                            [(ngModel)]="proyecto.nombreProye" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="descripcionProye">Descripcion</label>
+                        <input type="text" class="form-control" id="descripcionProye" name="descripcionProye"
+                            [(ngModel)]="proyecto.descripcionProye" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="repoUrl" >Url Repositorio</label>
+                        <input type="text" class="form-control" id="repoUrl" name="repoUrl" 
+                            [(ngModel)]="proyecto.repoUrl" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="imgUrl">Url logo</label>
+                        <input type="text" class="form-control" id="imgUrl" name="imgUrl"
+                            [(ngModel)]="proyecto.imgUrl">
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-success">
+                            Actualizar
+                        </button>
+                        <a href="/" class="btn btn-secondary">Cancelar</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

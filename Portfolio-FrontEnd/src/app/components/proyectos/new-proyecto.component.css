@@ -1,0 +1,12 @@
+.newPro{
+    background-image: url("../../../assets/fondo-login.jpg");
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    color: white;
+}
+
+.bg-glass {
+    background-color: hsla(0, 9%, 81%, 0.621) !important;
+    backdrop-filter: saturate(200%) blur(25px);
+}
