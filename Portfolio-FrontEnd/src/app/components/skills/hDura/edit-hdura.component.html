@@ -1,0 +1,30 @@
+<div class="editHD">
+    <div class="container p-5" *ngIf="hdura">
+        <div class="card bg-glass">
+            <div class="card-header text-center">
+                <h1>Editar Habilidad</h1>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="onUpdate()" novalidate #f="ngForm" class="px-5">
+                    <div class="form-group mb-3">
+                        <label for="nombreHD">Nombre</label>
+                        <input type="text" class="form-control" id="nombreHD" name="nombreHD"
+                            [(ngModel)]="hdura.nombreHD" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="porcentajeHD">Porcentaje</label>
+                        <input type="text" class="form-control" id="porcentajeHD" name="porcentajeHD"
+                            [(ngModel)]="hdura.porcentajeHD" required>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-success">
+                            Actualizar
+                        </button>
+                        <a href="/" class="btn btn-secondary">Cancelar</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

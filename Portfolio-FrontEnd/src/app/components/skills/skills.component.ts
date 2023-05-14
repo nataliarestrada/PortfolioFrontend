@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./skills.component.css']
 })
 export class SkillsComponent implements OnInit{
+
   ngOnInit(): void {
-    //throw new Error('Method not implemented.');
   }
 
 }

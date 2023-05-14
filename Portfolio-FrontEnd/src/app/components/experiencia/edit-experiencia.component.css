@@ -2,7 +2,8 @@
     background-image: url("../../../assets/fondo-login.jpg");
     background-position: center center;
     background-size: cover;
-    height: 100vh;
+    background-repeat: repeat;
+    min-height: 100vh;
     color: white;
 }
 

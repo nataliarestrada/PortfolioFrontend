@@ -5,6 +5,9 @@
                 <img src="../../../assets/foto-perfil.png" class="img-fluid mb-4" alt="Foto de perfil">
             </div>
             <div class="col-md-9">
+                <div class="row-1 mb-3">
+                    <button type="button" class="btn btn-info bi bi-pencil text-white" routerLink="/editar/{{persona.id}}" *ngIf="isLogged"> Editar</button>
+                </div>
                 <h1 class="card-title ">{{persona.nombre}} </h1>
                 <h3> <small> {{persona.ocupacion}}</small></h3>
                 <!-- <p>Mi nombre es [Nombre] y soy [Profesión o especialización]. Me apasiona [Intereses o habilidades relevantes] y disfruto [Hobbies o actividades adicionales]. He trabajado en [Experiencia laboral previa] y he colaborado en proyectos como [Proyectos anteriores relevantes]. Me considero una persona [Cualidades personales o de trabajo] y siempre estoy buscando aprender y crecer profesionalmente.</p> -->

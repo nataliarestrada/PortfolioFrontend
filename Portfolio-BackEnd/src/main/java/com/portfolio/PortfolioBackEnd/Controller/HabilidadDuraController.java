@@ -5,12 +5,12 @@
  */
 package com.portfolio.PortfolioBackEnd.Controller;
 
-import com.portfolio.PortfolioBackEnd.Dto.ProyectoDto;
+import com.portfolio.PortfolioBackEnd.Dto.HabilidadDuraDto;
+import com.portfolio.PortfolioBackEnd.Entity.HabilidadesDuras;
 import com.portfolio.PortfolioBackEnd.Entity.Persona;
-import com.portfolio.PortfolioBackEnd.Entity.Proyecto;
 import com.portfolio.PortfolioBackEnd.Repository.PersonaRepositority;
 import com.portfolio.PortfolioBackEnd.Security.Controller.Mensaje;
-import com.portfolio.PortfolioBackEnd.Service.ProyectoService;
+import com.portfolio.PortfolioBackEnd.Service.HabilidadDuraService;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,66 +31,63 @@ import org.springframework.web.bind.annotation.RestController;
  * @author natal
  */
 @RestController
-@RequestMapping("/proyecto")
+@RequestMapping("/habidura")
 @CrossOrigin(origins = "http://localhost:4200")
-public class ProyectoController {
+public class HabilidadDuraController {
     @Autowired
-    ProyectoService sPro; 
+    HabilidadDuraService sHD;
     @Autowired
     PersonaRepositority rPerso;
     
     @GetMapping("/lista")
-    public ResponseEntity<List<Proyecto>> list(){
-        List<Proyecto> list = sPro.list();
+    public ResponseEntity<List<HabilidadesDuras>> list(){
+        List<HabilidadesDuras> list = sHD.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Proyecto> getById(@PathVariable("id") int id){
-        if(!sPro.existsById(id))
+    public ResponseEntity<HabilidadesDuras> getById(@PathVariable("id") int id){
+        if(!sHD.existsById(id))
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
-        Proyecto proyecto = sPro.getOne(id).get();
-        return new ResponseEntity(proyecto, HttpStatus.OK);
+        HabilidadesDuras hd = sHD.getOne(id).get();
+        return new ResponseEntity(hd, HttpStatus.OK);
     }
     
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
-        if (!sPro.existsById(id)) {
+        if (!sHD.existsById(id)) {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         }
-        sPro.delete(id);
-        return new ResponseEntity(new Mensaje("Proyecto eliminado"), HttpStatus.OK);
+        sHD.delete(id);
+        return new ResponseEntity(new Mensaje("Habilidad eliminada"), HttpStatus.OK);
     }
     
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody ProyectoDto dtopro){      
-        if(StringUtils.isBlank(dtopro.getNombreProye()))
+    public ResponseEntity<?> create(@RequestBody HabilidadDuraDto dtohd){      
+        if(StringUtils.isBlank(dtohd.getNombreHD()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         
-        Persona perso = rPerso.findById(dtopro.getPersonaId()).orElse(null);
-        Proyecto pro = new Proyecto(perso, dtopro.getNombreProye(), dtopro.getDescripcionProye()
-                , dtopro.getImgUrl(), dtopro.getRepoUrl());
-        sPro.save(pro);
+        Persona perso = rPerso.findById(dtohd.getPersonaId()).orElse(null);
+        HabilidadesDuras hd = new HabilidadesDuras(perso, dtohd.getNombreHD(), dtohd.getPorcentajeHD());
+        sHD.save(hd);
         
-        return new ResponseEntity(new Mensaje("Proyecto agregado"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Habilidad agregada"), HttpStatus.OK);
     }
     
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody ProyectoDto dtopro){
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody HabilidadDuraDto dtohd){
         //Validamos si existe el ID
-        if(!sPro.existsById(id))
+        if(!sHD.existsById(id))
             return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
         //No puede estar vacio
-        if(StringUtils.isBlank(dtopro.getNombreProye()))
+        if(StringUtils.isBlank(dtohd.getNombreHD()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         
-        Proyecto pro = sPro.getOne(id).get();
-        pro.setNombreProye(dtopro.getNombreProye());
-        pro.setDescripcionProye(dtopro.getDescripcionProye());
-        pro.setImgUrl(dtopro.getImgUrl());
-        pro.setRepoUrl(dtopro.getRepoUrl());
+        HabilidadesDuras hd = sHD.getOne(id).get();
+        hd.setNombreHD(dtohd.getNombreHD());
+        hd.setPorcentajeHD(dtohd.getPorcentajeHD());
         
-        sPro.save(pro);
-        return new ResponseEntity(new Mensaje("Proyecto actualizado"), HttpStatus.OK);            
+        sHD.save(hd);
+        return new ResponseEntity(new Mensaje("Habilidad actualizada"), HttpStatus.OK);            
     }
 }

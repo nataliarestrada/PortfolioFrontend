@@ -1,0 +1,90 @@
+<section class="edit-acerca-de-mi">
+    <div class="container p-5" *ngIf="persona">
+        <div class="card bg-glass">
+            <div class="card-header text-center">
+                <h1>Editar Informacion</h1>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="onUpdate()" novalidate #f="ngForm" class="px-5">
+                    <h3>Informacion</h3>
+                    <div class="row row-cols-auto">
+                        <div class="form-group col mb-3">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="persona.nombre"
+                                required>
+                        </div>
+                        <div class="form-group col mb-3">
+                            <label for="ocupacion">Ocupacion</label>
+                            <input type="text" class="form-control" id="ocupacion" name="ocupacion"
+                                [(ngModel)]="persona.ocupacion" required>
+                        </div>
+                        <div class="form-group col mb-3">
+                            <label for="email">email</label>
+                            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="persona.email"
+                                required>
+                        </div>
+                    </div>
+                
+                    <div class="form-group mb-3">
+                        <label for="descripcion">Descripcion</label>
+                        <textarea class="form-control" name="descripcion" id="descripcion" cols="30" rows="3"
+                            [(ngModel)]="persona.descripcion" required></textarea>
+                    </div>
+
+                    <h3>Imagenes</h3>
+
+                    <div class="row row-cols-auto">
+                        <div class="form-group mb-3 col">
+                            <label for="imgUrl">Foto Perfil</label>
+                            <input type="text" class="form-control" id="imgUrl" name="imgUrl" [(ngModel)]="persona.imgUrl"
+                                required>
+                        </div>
+                        <div class="form-group mb-3 col">
+                            <label for="bannerUrl">Foto Banner</label>
+                            <input type="text" class="form-control" id="bannerUrl" name="bannerUrl"
+                                [(ngModel)]="persona.bannerUrl" required>
+                        </div>
+                    </div>
+
+                    <h3>Redes Sociales</h3>
+
+                    <div class="row row-cols-auto">
+                        <div class="form-group col mb-3">
+                            <label for="linkedinUrl">LinkedIn</label>
+                            <input type="text" class="form-control" id="linkedinUrl" name="linkedinUrl"
+                                [(ngModel)]="persona.linkedinUrl" required>
+                        </div>
+                        <div class="form-group col mb-3">
+                            <label for="githubUrl">GitHub</label>
+                            <input type="text" class="form-control" id="githubUrl" name="githubUrl"
+                                [(ngModel)]="persona.githubUrl" required>
+                        </div>
+                        <div class="form-group col mb-3">
+                            <label for="facebookUrl">Facebook</label>
+                            <input type="text" class="form-control" id="facebookUrl" name="facebookUrl"
+                                [(ngModel)]="persona.facebookUrl" required>
+                        </div>
+                        <div class="form-group col mb-3">
+                            <label for="instagramUrl">Instagram</label>
+                            <input type="text" class="form-control" id="instagramUrl" name="instagramUrl"
+                                [(ngModel)]="persona.instagramUrl" required>
+                        </div>
+                        <div class="form-group col mb-3">
+                            <label for="twtterUrl">Twtter</label>
+                            <input type="text" class="form-control" id="twtterUrl" name="twtterUrl"
+                                [(ngModel)]="persona.twtterUrl" required>
+                        </div>
+                    </div>
+
+                    
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-success">
+                            Actualizar
+                        </button>
+                        <a href="/" class="btn btn-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

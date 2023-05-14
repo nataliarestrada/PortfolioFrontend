@@ -22,6 +22,13 @@ import { NewEducacionComponent } from './components/educacion/new-educacion.comp
 import { EditEducacionComponent } from './components/educacion/edit-educacion.component';
 import { NewProyectoComponent } from './components/proyectos/new-proyecto.component';
 import { EditProyectoComponent } from './components/proyectos/edit-proyecto.component';
+import { HDuraComponent } from './components/skills/hDura/h-dura/h-dura.component';
+import { HBlandaComponent } from './components/skills/hBlanda/h-blanda/h-blanda.component';
+import { NewHBlandaComponent } from './components/skills/hBlanda/new-hblanda/new-hblanda.component';
+import { EditHBlandaComponent } from './components/skills/hBlanda/edit-hblanda/edit-hblanda.component';
+import { NewHDuraComponent } from './components/skills/hDura/new-hdura.component';
+import { EditHDuraComponent } from './components/skills/hDura/edit-hdura.component';
+import { EditAcercaDeComponent } from './components/acerca-de/edit-acerca-de.component';
 
 
 @NgModule({
@@ -42,6 +49,13 @@ import { EditProyectoComponent } from './components/proyectos/edit-proyecto.comp
     EditEducacionComponent,
     NewProyectoComponent,
     EditProyectoComponent,
+    HDuraComponent,
+    HBlandaComponent,
+    NewHBlandaComponent,
+    EditHBlandaComponent,
+    NewHDuraComponent,
+    EditHDuraComponent,
+    EditAcercaDeComponent,
     
   ],
   imports: [

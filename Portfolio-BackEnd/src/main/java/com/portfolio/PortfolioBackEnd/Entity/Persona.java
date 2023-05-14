@@ -54,6 +54,12 @@ public class Persona {
     @OneToMany(mappedBy = "persona")
     private List<Proyecto> proyectos;
     
+    @OneToMany(mappedBy = "persona")
+    private List<HabilidadesDuras> habilidadD;
+    
+    @OneToMany(mappedBy = "persona")
+    private List<HabilidadesBlandas> habilidadB;
+    
     //constructor
 
     public Persona() {
@@ -74,7 +80,7 @@ public class Persona {
         this.imgUrl = imgUrl;
     }
 
-    public Persona(String nombre, String ocupacion, String bannerUrl, String email, String linkedinUrl, String githubUrl, String facebookUrl, String twtterUrl, String instagramUrl, String descripcion, String imgUrl, List<Educacion> educaciones, List<Experiencia> experiencias, List<Proyecto> proyectos) {
+    public Persona(String nombre, String ocupacion, String bannerUrl, String email, String linkedinUrl, String githubUrl, String facebookUrl, String twtterUrl, String instagramUrl, String descripcion, String imgUrl, List<Educacion> educaciones, List<Experiencia> experiencias, List<Proyecto> proyectos, List<HabilidadesDuras> habilidadD, List<HabilidadesBlandas> habilidadB) {
         this.nombre = nombre;
         this.ocupacion = ocupacion;
         this.bannerUrl = bannerUrl;
@@ -89,8 +95,8 @@ public class Persona {
         this.educaciones = educaciones;
         this.experiencias = experiencias;
         this.proyectos = proyectos;
+        this.habilidadD = habilidadD;
+        this.habilidadB = habilidadB;
     }
-    
-    
-    
+
 }
