@@ -28,7 +28,7 @@ export class NewProyectoComponent implements OnInit{
     onCreate(): void {
       const pro = new Proyecto(this.personaId, this.nombreProye, this.descripcionProye, this.imgUrl, this.repoUrl);
       if(pro.imgUrl == ""){
-        pro.imgUrl = "https://empresas.infoempleo.com/hrtrends/media/2020/08/HRTrends-como-se-valora-un-curr%C3%ADculum.jpg"
+        pro.imgUrl = "https://website-assets-fs.freshworks.com/attachments/ckbsryqms00q2heg19ekuza1r-it-product-management0.one-half.png"
       }
   
       this.sProyecto.save(pro).subscribe(

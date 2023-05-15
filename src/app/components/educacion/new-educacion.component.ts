@@ -27,7 +27,7 @@ export class NewEducacionComponent implements OnInit{
   onCreate(): void {
     const edu = new Educacion(this.personaId, this.tituloEdu, this.periodoEdu, this.institucionEdu, this.descripcionEdu, this.urlLogoEdu);
     if(edu.urlLogoEdu == ""){
-      edu.urlLogoEdu = "https://empresas.infoempleo.com/hrtrends/media/2020/08/HRTrends-como-se-valora-un-curr%C3%ADculum.jpg"
+      edu.urlLogoEdu = "https://img.freepik.com/fotos-premium/gorra-posgrado-negra-desplazamiento-grado-cientifico-aislado-sobre-fondo-blanco_188237-621.jpg"
     }
 
     this.sEducacion.save(edu).subscribe(

@@ -27,7 +27,7 @@ export class NewExperienciaComponent implements OnInit{
   onCreate(): void {
     const expe = new Experiencia(this.personaId, this.puestoExpe, this.periodoExpe, this.organismoExpe, this.descripcionExpe, this.urlLogoExpe);
     if(expe.urlLogoExpe == ""){
-      expe.urlLogoExpe = "https://empresas.infoempleo.com/hrtrends/media/2020/08/HRTrends-como-se-valora-un-curr%C3%ADculum.jpg"
+      expe.urlLogoExpe = "https://i0.wp.com/talentocool.com/wp-content/uploads/2020/12/redactar-un-cv-para-programacion-1024x682.jpg"
     }
 
     this.sExperiencia.save(expe).subscribe(
