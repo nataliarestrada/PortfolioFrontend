@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Experiencia } from 'src/app/model/experiencia';
 import { SExperienciaService } from 'src/app/service/s-experiencia.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-new-experiencia',
@@ -10,7 +11,7 @@ import { SExperienciaService } from 'src/app/service/s-experiencia.service';
 })
 export class NewExperienciaComponent implements OnInit{
   
-  personaId: number = 1;
+  personaId: number = environment.personaId;
   puestoExpe: String = "";
   periodoExpe: String = "";
   organismoExpe: String = "";

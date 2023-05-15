@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HDura } from 'src/app/model/hdura';
 import { HDuraService } from 'src/app/service/hdura.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-new-hdura',
@@ -9,7 +10,7 @@ import { HDuraService } from 'src/app/service/hdura.service';
   styleUrls: ['./new-hdura.component.css']
 })
 export class NewHDuraComponent implements OnInit{
-  personaId: number = 1;
+  personaId: number = environment.personaId;
   nombreHD: String = "";
   porcentajeHD: String = "";
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Proyecto } from 'src/app/model/proyecto';
 import { ProyectoService } from 'src/app/service/proyecto.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-new-proyecto',
@@ -10,7 +11,7 @@ import { ProyectoService } from 'src/app/service/proyecto.service';
 })
 export class NewProyectoComponent implements OnInit{
 
-    personaId: number = 1;
+    personaId: number = environment.personaId;
     nombreProye: String = "";
     descripcionProye: String = "";
     imgUrl: String = "";

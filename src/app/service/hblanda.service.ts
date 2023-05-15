@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HBlanda } from '../model/hblanda';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HBlandaService {
 
-  hblandaURL = 'http://localhost:8080/habiblanda/'
+  hblandaURL = environment.apiURL + 'habiblanda/'
 
   constructor(private httpClient: HttpClient) { }
 

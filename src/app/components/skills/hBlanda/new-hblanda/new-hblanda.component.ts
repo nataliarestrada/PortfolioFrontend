@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HBlanda } from 'src/app/model/hblanda';
 import { HBlandaService } from 'src/app/service/hblanda.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-new-hblanda',
@@ -9,7 +10,7 @@ import { HBlandaService } from 'src/app/service/hblanda.service';
   styleUrls: ['./new-hblanda.component.css']
 })
 export class NewHBlandaComponent implements OnInit{
-  personaId: number = 1;
+  personaId: number = environment.personaId;
   nombreHB: String = "";
   porcentajeHB: String = "";
 

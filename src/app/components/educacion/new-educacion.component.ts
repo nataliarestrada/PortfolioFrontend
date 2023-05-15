@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Educacion } from 'src/app/model/educacion';
 import { EducacionService } from 'src/app/service/educacion.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-new-educacion',
@@ -10,7 +11,7 @@ import { EducacionService } from 'src/app/service/educacion.service';
 })
 export class NewEducacionComponent implements OnInit{
   
-  personaId: number = 1;
+  personaId: number = environment.personaId;
   tituloEdu: String = "";
   periodoEdu: String = "";
   institucionEdu: String = "";
